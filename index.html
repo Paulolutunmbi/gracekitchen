@@ -8,28 +8,40 @@
 </head>
 <body class="bg-gray-50">
 
+  <!-- Header -->
   <header class="p-6 bg-orange-600 text-white text-center">
     <h1 class="text-3xl font-bold">Grace's Kitchen</h1>
     <p class="text-sm">Lasting Taste</p>
-
-    <div class="mt-4 flex justify-center">
-      <input 
-        id="searchInput"
-        type="text"
-        placeholder="Search foods..."
-        class="w-full max-w-md p-2 rounded text-black"
-      />
-    </div>
   </header>
 
+  <!-- Loader -->
   <div id="loader" class="text-center py-10 hidden">
-    <p class="animate-pulse text-orange-600 text-lg">Loading foods...</p>
+    <p class="animate-pulse text-orange-600">Loading foods...</p>
   </div>
 
+  <!-- Filters & Search -->
   <main class="p-6">
+    <div class="flex flex-wrap gap-4 mb-6">
+      <input id="searchInput" type="text" placeholder="Search foods..."
+        class="border p-2 flex-1 min-w-[150px]">
+
+      <select id="categoryFilter" class="border p-2">
+        <option value="">All Categories</option>
+      </select>
+
+      <select id="regionFilter" class="border p-2">
+        <option value="">All Regions</option>
+      </select>
+
+      <label><input type="checkbox" id="vegFilter"> Vegetarian</label>
+      <label><input type="checkbox" id="spicyFilter"> Spicy</label>
+
+      <button id="clearFilters" class="bg-gray-300 px-3 py-1 rounded">Clear Filters</button>
+    </div>
+
+    <!-- Grid -->
     <div id="foodsGrid" class="grid md:grid-cols-3 gap-6"></div>
   </main>
-  
 
   <script src="script.js"></script>
 </body>
