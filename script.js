@@ -74,6 +74,8 @@ function renderFoods(foods) {
 
     const vegIcon = food.isVegetarian ? "🌱 Vegetarian" : "";
     const spicyIcon = food.isSpicy ? "🌶 Spicy" : "";
+    const isFavorite = favorites.some(f => f.id === food.id);
+    const heart = isFavorite ? "❤️" : "🤍";
 
     card.innerHTML = `
 
@@ -83,8 +85,10 @@ Food Image
 
 <div class="p-4">
 
-<h2 class="text-xl font-bold mb-2">${food.name}</h2>
-
+<h2 class="text-xl font-bold mb-2 flex justify-between">
+${food.name}
+<span>${heart}</span>
+</h2>
 <p class="text-gray-600 text-sm mb-2">${food.description}</p>
 
 <div class="flex gap-3 text-sm mb-2">
@@ -110,30 +114,29 @@ ${spicyIcon}
 function openModal(food) {
   const isFavorite = favorites.some((f) => f.id === food.id);
 
-  modalContent.innerHTML = `
-
+modalContent.innerHTML = `
 <h2 class="text-2xl font-bold mb-2">${food.name}</h2>
 
 <p class="mb-2">${food.description}</p>
 
-<p>Calories: ${food.calories}</p>
+<p><strong>Calories:</strong> ${food.calories}</p>
+<p><strong>Prep Time:</strong> ${food.preparationTime} mins</p>
 
-<p>Prep Time: ${food.preparationTime} mins</p>
-
-<div class="flex gap-3 mt-2 mb-4">
-
+<div class="flex gap-3 mt-2 mb-3">
 ${food.isVegetarian ? "🌱 Vegetarian" : ""}
 ${food.isSpicy ? "🌶 Spicy" : ""}
-
 </div>
+
+<h3 class="font-semibold mt-4 mb-2">Ingredients</h3>
+
+<ul class="list-disc pl-5 text-sm mb-4">
+${food.ingredients ? food.ingredients.map(i => `<li>${i}</li>`).join("") : "<li>No ingredients listed</li>"}
+</ul>
 
 <button id="favoriteBtn"
 class="bg-orange-600 text-white px-4 py-2 rounded">
-
 ${isFavorite ? "Remove Favorite ❤️" : "Add to Favorites 🤍"}
-
 </button>
-
 `;
 
   foodModal.classList.remove("hidden");
