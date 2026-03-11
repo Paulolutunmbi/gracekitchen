@@ -8,37 +8,70 @@
   </head>
   <body class="bg-gray-50">
     <!-- Header -->
-    <header class="p-6 bg-orange-600 text-white text-center">
-      <h1 class="text-3xl font-bold">Grace's Kitchen</h1>
-      <p class="text-sm">Lasting Taste</p>
-      <button
-        id="favoritesView"
-        class="bg-white text-orange-600 px-4 py-2 rounded"
-      >
-        Favorites ❤️
-      </button>
-    </header>
+  <header class="p-6 bg-orange-600 text-white flex justify-between items-center">
+
+<div>
+<h1 id="homeBtn" class="text-3xl font-bold cursor-pointer">
+Grace's Kitchen
+</h1>
+<p class="text-sm">Lasting Taste</p>
+</div>
+
+<button
+id="favoritesView"
+class="bg-white text-orange-600 px-4 py-2 rounded font-semibold hover:bg-orange-100">
+❤️ Favorites
+</button>
+
+</header>
 
     <!-- Loader -->
     <div id="loader" class="text-center py-10 hidden">
       <p class="animate-pulse text-orange-600">Loading foods...</p>
     </div>
 
+    <section class="relative h-64 w-full overflow-hidden">
+
+<img
+src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+alt="Food banner"
+class="w-full h-full object-cover"
+/>
+
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+
+<div class="text-center text-white px-4">
+
+<h2 class="text-4xl font-bold mb-2">
+Discover Delicious Foods
+</h2>
+
+<p class="text-lg">
+Explore Nigerian and global dishes from Grace's Kitchen
+</p>
+
+</div>
+
+</div>
+
+</section>
     <!-- Filters & Search -->
     <main class="p-6">
-      <div class="flex flex-wrap gap-4 mb-6">
+      <div class="bg-white p-4 rounded-xl shadow flex flex-wrap gap-4 mb-6">
         <input
           id="searchInput"
           type="text"
           placeholder="Search foods..."
-          class="border p-2 flex-1 min-w-[150px]"
+          class="border rounded-lg p-2 flex-1 min-w-[150px]"
         />
-
-        <select id="categoryFilter" class="border p-2">
+<h2 class="text-2xl font-bold mb-4 text-gray-800">
+Available Foods
+</h2>
+        <select id="categoryFilter" class="border rounded-lg p-2">
           <option value="">All Categories</option>
         </select>
 
-        <select id="regionFilter" class="border p-2">
+        <select id="regionFilter" class="border rounded-lg p-2">
           <option value="">All Regions</option>
         </select>
 
@@ -58,7 +91,7 @@
       </div>
 
       <!-- Grid -->
-      <div id="foodsGrid" class="grid md:grid-cols-3 gap-6"></div>
+      <div id="foodsGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
     </main>
     <!-- Food Detail Modal -->
     <div
@@ -80,7 +113,7 @@
     </div>
     <div
       id="toast"
-      class="fixed bottom-6 right-6 bg-black text-white px-4 py-2 rounded-lg shadow-lg opacity-0 transition-opacity duration-300"
+      class="fixed top-6 left-1/2 -translate-x-1/2 bg-orange-100 text-orange-700 px-6 py-3 rounded-lg shadow-lg font-medium opacity-0 transition duration-300"
     ></div>
     <script src="script.js"></script>
   </body>
